@@ -1,0 +1,63 @@
+kind: pdd-shop
+name: 拼多多（平台沙箱）
+category: 电商平台
+auth_kind: personal_token
+mcp_mode: gateway
+description: 拼多多沙箱连接器：确定性模拟平台，用于交易域任务闭环演示（写操作需审批）。
+credential_fields: [access_token]
+tools:
+  - name: publish_product
+    scope: write
+    risk: high
+    description: 将商品上架到拼多多（写入平台草稿）。
+    params:
+      sku:
+        type: string
+        description: 商品 SKU
+      title:
+        type: string
+        description: 商品标题
+      price:
+        type: number
+        description: 商品价格（元）
+    required: [sku, title, price]
+  - name: update_price
+    scope: write
+    risk: high
+    description: 修改拼多多在售商品价格。
+    params:
+      sku:
+        type: string
+        description: 商品 SKU
+      price:
+        type: number
+        description: 新价格（元）
+    required: [sku, price]
+  - name: push_reply
+    scope: write
+    risk: medium
+    description: 向订单买家推送售后回复。
+    params:
+      order_ref:
+        type: string
+        description: 平台订单号
+      body:
+        type: string
+        description: 回复正文
+    required: [order_ref, body]
+  - name: grant_refund
+    scope: write
+    risk: high
+    description: 为订单执行退款（资金操作，高危）。
+    params:
+      order_ref:
+        type: string
+        description: 平台订单号
+      amount:
+        type: number
+        description: 退款金额（元）
+    required: [order_ref, amount]
+  - name: list_orders
+    scope: read
+    risk: low
+    description: 拉取拼多多最近订单列表。

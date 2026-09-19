@@ -1,0 +1,19 @@
+# Python / server
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Node / console
+node_modules/
+dist/
+.vite/
+
+# 运行时产物：本地数据库与走查日志（不属于代码）
+*.db
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon: #050b0f;
+  --color-surface: #0f1c26;
+  --color-surface2: #16283589;
+  --color-panel: #0c161d;
+  --color-neon: #00ff99;
+  --color-neondeep: #00b377;
+  --color-accent: #6c63ff;
+  --color-warn: #ff8c42;
+  --color-danger: #ff5d6c;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-ink: #e7eff2;
+  --color-mute: #8fa3ad;
+  --font-display: "Space Grotesk", "Noto Sans SC", sans-serif;
+  --font-body: "Inter", "Noto Sans SC", sans-serif;
+  --radius-card: 24px;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(108, 99, 255, 0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(0, 255, 153, 0.07), transparent 55%),
+    var(--color-carbon);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: rgba(0, 255, 153, 0.25);
+}
+
+.glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(6px);
+}
+
+.neon-text {
+  color: var(--color-neon);
+  text-shadow: 0 0 24px rgba(0, 255, 153, 0.35);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 2px;
+}
+
+@keyframes dashflow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}

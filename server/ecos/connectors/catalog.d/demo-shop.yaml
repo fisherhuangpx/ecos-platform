@@ -1,0 +1,43 @@
+kind: demo-shop
+name: Demo 商城（演示连接器）
+category: 电商平台
+auth_kind: personal_token
+mcp_mode: gateway
+description: 垂直切片演示用的模拟电商平台：读商品/订单，写商品/价格（写操作需审批）。
+credential_fields: [access_token]
+tools:
+  - name: list_products
+    scope: read
+    risk: low
+    description: 列出店铺内全部商品（SKU、标题、价格、库存）。
+  - name: get_orders
+    scope: read
+    risk: low
+    description: 拉取最近订单列表。
+  - name: create_product
+    scope: write
+    risk: medium
+    description: 在店铺创建新商品。
+    params:
+      sku:
+        type: string
+        description: 商品 SKU
+      title:
+        type: string
+        description: 商品标题
+      price:
+        type: number
+        description: 商品价格（元）
+    required: [sku, title, price]
+  - name: update_price
+    scope: write
+    risk: high
+    description: 修改商品价格（高危写入）。
+    params:
+      sku:
+        type: string
+        description: 商品 SKU
+      price:
+        type: number
+        description: 新价格（元）
+    required: [sku, price]
